@@ -10,8 +10,8 @@ nltk.download('stopwords')
 
 
 df_reviews = pd.read_csv('amazon-cell-phones-reviews/20190928-reviews.csv')
-df_reviews.loc[df_reviews['rating'] <= 3, 'liked'] = False
-df_reviews.loc[df_reviews['rating'] > 3, 'liked'] = True
+df_reviews.loc[df_reviews['rating'] <= 3, 'appreciation'] = False
+df_reviews.loc[df_reviews['rating'] > 3, 'appreciation'] = True
 stop_words = set(stopwords.words('english'))
 
 threshold_factor = 0.7
@@ -21,8 +21,8 @@ df_model_data = df_reviews.iloc[:model_index]
 
 threshold_factor = 0.8
 
-positive_reviews = df_model_data[df_model_data['liked'] == True]
-negative_reviews = df_model_data[df_model_data['liked'] == False]
+positive_reviews = df_model_data[df_model_data['appreciation'] == True]
+negative_reviews = df_model_data[df_model_data['appreciation'] == False]
 
 m_str = 'this is a sentence.and this other 12.90'
 re.sub("[^\w]", " ",  m_str).split()
